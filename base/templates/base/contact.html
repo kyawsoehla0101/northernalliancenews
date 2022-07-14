@@ -1,0 +1,95 @@
+{% extends 'layouts/main.html' %}
+{% load static %}
+{% block title %}Contact Us{% endblock title %}
+{% block content %}
+<div class="contact_img pt-3">
+    <center>
+      <img src="{% static 'images/aa.png' %}" alt="" class="title_image" />
+      <img src="{% static 'images/mndaa.png' %}" alt="" class="title_image mx-5" />
+      <img src="{% static 'images/tnla.jpg' %}" alt="" class="title_image" />
+    </center>
+  </div>
+  <div class="container" style="width: 90%">
+    <h3 class="py-5 fw-bold">CONTACT US</h3>
+    <form action="">
+      <div class="dialog_box mt-5" style="width: 100%">
+        <div class="row">
+          <div class="col-md-8">
+            <!-- row -->
+            <div class="row">
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="Name" />
+                <input
+                  type="text"
+                  class="form-control mt-3"
+                  placeholder="Email"
+                />
+                <input
+                  type="text"
+                  class="form-control mt-3"
+                  placeholder="Subject"
+                />
+                <textarea
+                  name="Message"
+                  class="form-control mt-3 text-dark"
+                  id=""
+                  cols="30"
+                  rows="5"
+                  placeholder="Message"
+                >
+                </textarea>
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-sm mt-3 fw-bold"
+                >
+                  Send Message
+                </button>
+                <button
+                  type="reset"
+                  class="btn btn-danger btn-sm mt-3 mx-3 fw-bold"
+                >
+                  Reset
+                </button>
+              </div>
+              <div class="col-md-4">
+                <h3 style="font-weight: bold">Email:</h3>
+                <a href="#" style="overflow-wrap: break-word"
+                  >arakanarmy@protonmail.com</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- col -->
+
+          <div
+            class="col-md-4"
+            style="
+              padding-left: 20px;
+              border-left: 1px solid rgb(214, 214, 214);
+              height: 70px;
+            "
+          >
+            <h3 style="font-weight: bold">Follow:</h3>
+            <p>
+              <a href="#"
+                ><i class="fab fa-vk fa-1x" style="margin: 0px 0px"></i
+              ></a>
+              <a href="#"
+                ><i
+                  class="fab fa-facebook-f fa-1x"
+                  style="margin: 0px 10px"
+                ></i
+              ></a>
+              <a href="#"
+                ><i class="fab fa-twitter fa-1x" style="margin: 0px 0px"></i
+              ></a>
+              <a href=""
+                ><i class="fab fa-youtube fa-1x" style="margin: 0px 10px"></i
+              ></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

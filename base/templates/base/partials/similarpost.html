@@ -1,0 +1,30 @@
+<div>
+    <h4 class="text-center fw-bold">Similar Posts</h4>
+    <hr />
+    <div class="row g-3">
+        {% if similarposts %}
+        {% for post in similarposts %}
+          <div class="col-lg-3 col-md-4 col-sm-12 py-2">
+            <div class="card">
+                <div style="
+                background-image:
+                  url({{post.thumbnail.url}});
+                background-size: cover;
+                height:250px;
+                ">
+              </div>
+                <div class="p-3">
+                  <a href="{% url 'detail' post.slug %}" class="text-decoration-none">{{post.title | truncatechars:35}}</a>
+                  <hr />
+              <span>{{post.category}}</span><span class="float-end fs-9"><i class="far fa-eye"></i> {{post.views}}</span>
+                </div>
+            </div>
+          </div>
+        {% endfor %}{% else %}
+        <div class="card p-5 m-3">
+          <h1 class="text-danger">Ooops! </h1>
+          <h4 class="text-danger">There is no posts in this category!</h4>
+        </div>
+        {% endif %}
+    </div>
+</div>

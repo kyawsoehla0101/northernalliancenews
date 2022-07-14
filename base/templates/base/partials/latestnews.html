@@ -1,0 +1,55 @@
+{% load static %}
+<div class="row" >
+ {% for post in posts %}
+ <div class="col-lg-8 rounded col-md-12 col-sm-12"  >
+<div style="
+background-image: linear-gradient(
+    to bottom,
+    rgba(214, 214, 219, 0.1),
+    rgba(8, 8, 8, 2)
+  ),
+  url({{post.thumbnail.url}});
+background-size: cover;
+height:500px;
+" class="rounded">
+   
+<div class="banner-content">
+    <span class="badge bg-danger text-break">
+        {{post.category}}
+    </span>   
+    <a href="{% url 'detail' post.slug %}" class="text-break text-white text-decoration-none w-100" style="position: relative">
+        <h3 class="fw-bold py-3 lh-base">
+            {{post.title | truncatechars:70}}</h3>
+    </a>
+    <span>{% for tag in post.tags.all %}
+        <a href="{% url 'tagpost' tag.slug %}" class="btn btn-secondary btn-sm">
+           # {{tag}}
+        </a>
+        {% endfor %} </span> <span class="mx-3">{{post.created | timesince}} ago</span>
+</div>
+</div>{% endfor %}
+  </div>
+  <div class="card col-lg-4 col-md-12 col-sm-12">
+    <h3 class="py-2">Latest News</h3>
+    <hr class="text-center text-danger border-2 opacity-20" />
+   {% for latestpost in latestposts %}
+   <div class="row py-2">
+    <div class="col-lg-8 col-md-8 col-sm-12">
+       <div>
+        <a href="{% url 'detail' latestpost.slug %}" class="text-decoration-none lh-base"> {{latestpost.title | truncatechars:60}}  </a>
+       </div>
+        <div class="pt-3">
+            <span>{{latestpost.category}} </span> <span class="mx-3">{{latestpost.created | timesince}} ago</span>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+        <div style="height: 90px;overflow: hidden;">
+            <img src="{{latestpost.thumbnail.url}}" class="img-fluid" height="20px" alt="">
+        </div>
+    </div>
+</div><hr>{% endfor %}
+    
+
+  </div>
+
+</div>

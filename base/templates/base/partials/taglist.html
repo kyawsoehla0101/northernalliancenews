@@ -1,0 +1,5 @@
+<div class="pb-3">
+    {% for tag in tags %}
+    <a href="{% url 'tagpost' tag.slug %}"><span class="btn my-1 btn-sm btn-secondary ">#{{ tag.name }} </span></a>
+    {% endfor %}
+</div>

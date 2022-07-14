@@ -1,0 +1,57 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Search{% endblock title %}
+{% block content %}
+<form class="d-flex py-5" role="search">
+    <input
+    class="form-control me-2"
+    type="search"
+    name = "q"
+    value="{{q}}"
+    placeholder="Search"
+    aria-label="Search"
+    />
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<h4 class="fw-bold py-2">Searcing result for <span class="fs-4 text-danger">"{{q}}"</span></h4>
+{% if results %}
+{% for result in results %}
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 pb-2">
+        <div class="card" style="height: 250px;overflow:hidden">
+            <img src="{{result.thumbnail.url}}" class="img-fluid" alt="">
+        </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12">
+        <a href="{% url 'detail' result.slug %}" class="text-decoration-none">
+            <h5 class="fw-bold lh-base">{{result.title | truncatechars:70}}</h5>
+        </a>
+        <p class="lh-lg pt-3">
+            {{result.short_description|truncatechars:400}}
+        </p>
+        <div class=" pt-4">
+            <span style="font-size: 13px" class=" text-secondary text-capitalize">{{result.category}} </span>
+
+        <span class="float-end">
+            <i
+                class="fas fa-clock fw-lighter text-secondary"
+            ></i
+            >
+            <span class="text-lighter text-secondary" style="font-size: 13px"
+                >
+                {{ result.created|timesince}} ago
+               
+            
+        </span>
+    </div>
+    </div>
+    <hr class="m-3" />
+</div>
+{% endfor %}
+{% else %}
+<div class="card p-4">
+    <h1 class="text-danger">OOPS!</h1>
+    <h3 class="text-danger">Post Not Found ! </h3>
+    <p>There is no posts in your searching keyword!</p>
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'layouts/main.html' %}
+{% load social_share %}
+{% block title %}{{post.title}}{% endblock title %}
+{% block content %}
+   <div class="row py-3">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+            <h5 class="lh-lg fw-bold pb-3">{{post.title}}</h5>
+            {% if post.short_description %}
+            <p class="lh-lg fw-bold">{{post.short_description}}</p>
+            {% endif %}
+            <div class="pb-3">
+               {% for tag in post.tags.all %}
+               <a href="{% url 'tagpost' tag.slug %}" class="btn btn-secondary btn-sm">
+                  # {{tag}}
+               </a>
+               {% endfor %}
+            </div>
+            <span class="fw-bold">{{post.category}}</span>
+            <span class="float-end fw-bold">{{post.created | timesince}} ago</span>
+            <div class="py-2">
+               {% if post.feature == True %}
+               <img src="{{post.thumbnail.url}}" class="w-100 img-fluid" alt="{{post.title}}">
+               {% endif %}
+            </div>
+           <div class="lh-lg desc">
+            {{post.description.html | safe}}
+           </div>
+            <hr style="color: rgb(154, 151, 151)" />
+            <!-- social -->
+            <p class="text-center">Share On Social</p>
+            
+            
+            <p class="text-center py-1">
+               
+               {% load social_share %}
+               <ul style="display:flex;justify-content:center">
+                  <li style="list-style:none;">{% post_to_facebook object_or_url '<i class="fab fa-facebook fs-2 d_icon"></i>' %}
+                  </li>
+                  <li style="list-style:none;padding-left:10px">{% post_to_telegram "New Song: " object_or_url '<i class="fab fs-2 fa-telegram d_icon"></i>' %}
+                  </li>
+                  <li style="list-style:none;padding-left:10px">{% post_to_twitter "New Song: " object_or_url '<i class="fab fs-2 fa-twitter d_icon"></i>' %}
+                  </li>
+                  <li style="list-style:none;padding-left:10px">{% post_to_whatsapp object_or_url '<i class="fa-brands fs-2 fa-whatsapp"></i>' %}
+                  </li>
+                  
+               </ul>
+            </p>
+        
+    </div>
+
+    {% include 'base/partials/popularpost.html' %}
+   </div>
+   {% include 'base/partials/similarpost.html' %}
+   {% add_pinterest_script %}
+{% endblock content %}

@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100&display=swap");
+body {
+  font-family: "Poppins", "Noto Serif Myanmar", sans-serif, serif;
+}
+.banner-content {
+  position: relative;
+  top: 300px;
+  margin-left: 40px;
+  margin-right: 40px;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow: hidden;
+  color: white;
+}
+.text {
+  word-break: break-all;
+}
+a,
+span,
+p {
+  font-size: 14px;
+}
+.flag-container {
+  width: 360px;
+  margin: auto;
+}
+.title_image {
+  width: 125px;
+  height: 70px;
+  object-fit: cover;
+  object-position: 50% 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-click {
+  border: 1px solid #ccc;
+  outline: none;
+  background-size: 22px;
+  background-position: 13px;
+  border-radius: 10px;
+  width: 120px;
+  height: 30px;
+  padding: 17px;
+  padding-left: 30px;
+  transition: all 0.5s;
+}
+.search-click:focus {
+  width: 300px;
+  padding-left: 50px;
+}
+.search-click {
+  position: relative;
+  overflow: hidden;
+  height: 20px;
+}
+.search-click input {
+  background: transparent;
+  border: 1px solid #ccc;
+  outline: none;
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: 0%;
+  padding: 10px;
+}
+.fa-magnifying-glass {
+  position: absolute;
+  padding: 9px;
+  z-index: 99;
+  color: #000;
+  font-size: 18px;
+  transition: all 0.5s ease;
+}

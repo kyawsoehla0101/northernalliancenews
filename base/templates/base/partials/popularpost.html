@@ -1,0 +1,61 @@
+<div class="col-lg-4 col-md-12">
+
+    <!-- recent card -->
+    <div class="row card">
+        <h3 class="fw-bold py-4">Popular Posts</h3>
+    <hr class="text-center text-danger border-2 opacity-20" />
+       {% for post in popularposts %}
+    <div class="card mb-3 border-0 py-2">
+        <div class="row g-0">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div
+          class=""
+          style="
+            background-image:
+              url('{{ post.thumbnail.url }}');
+            background-size: cover;
+            height: 120px;
+            background-position:center;
+            width:100%;
+          "
+        >
+        </div>
+            </div>
+            <div class="col-lg-9 col-md-6 col-sm-12">
+                <div class="px-3">
+                    <a href="{% url 'detail' post.slug %}" class="text-decoration-none lh-base"> {{post.title | truncatechars:60}}  </a>
+                    <div class="pt-4">
+                            <span style="font-size: 13px" class=" text-secondary text-capitalize">{{post.category}} </span>
+
+                        <span class="float-end">
+                            <i
+                                class="fas fa-clock fw-lighter text-secondary"
+                            ></i
+                            >
+                            <span class="text-lighter text-secondary" style="font-size: 13px"
+                                >
+                                {{ post.created|timesince}} ago
+                               
+                            
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    {% endfor %}
+    </div>
+
+
+    <!-- recent card end -->
+    <div class="row card my-3">
+        <h3 class="fw-bold py-4">Tags Lists</h3>
+    <hr class="text-center text-danger border-2 opacity-20" />
+    <div class="col">
+       {% include 'base/partials/taglist.html' %}
+    </div>
+    </div>
+</div>

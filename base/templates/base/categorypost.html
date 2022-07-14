@@ -1,0 +1,49 @@
+{% extends 'layouts/main.html' %}
+{% block title %}
+{% if slug == 'fpncc-members' %}
+        FPNCC MEMBERS
+        {% elif slug == 'ulaaa' %}
+        ULA/AA
+    {% elif slug == 'mntjpmndaa' %}
+        MNTJP/MNDAA
+    {% elif slug == 'pslftnla' %}
+        PSLF/TNLA
+    {% endif %}
+{% endblock title %}
+{% block content %}
+<div class="row g-3">
+    <h3 class="fw-bold text-uppercase">Posts of {% if slug == 'fpncc-members' %}
+        FPNCC MEMBERS
+        {% elif slug == 'ulaaa' %}
+        ULA/AA
+    {% elif slug == 'mntjpmndaa' %}
+        MNTJP/MNDAA
+    {% elif slug == 'pslftnla' %}
+        PSLF/TNLA
+    {% endif %}</h3>
+    {% if categoryposts %}
+    {% for post in categoryposts %}
+      <div class="col-lg-3 col-md-4 col-sm-12 py-2">
+        <div class="card">
+            <div style="
+            background-image:
+              url({{post.thumbnail.url}});
+            background-size: cover;
+            height:250px;
+            ">
+          </div>
+            <div class="p-3">
+              <a href="{% url 'detail' post.slug %}" class="text-decoration-none">{{post.title | truncatechars:35}}</a>
+              <hr />
+              <span>{{post.category}}</span><span class="float-end fs-9"><i class="far fa-eye"></i> {{post.views}}</span>
+            </div>
+        </div>
+      </div>
+    {% endfor %}{% else %}
+    <div class="card p-5 m-3">
+      <h1 class="text-danger">Ooops! </h1>
+      <h4 class="text-danger">There is no posts in this category!</h4>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}
